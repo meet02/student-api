@@ -289,6 +289,9 @@
   "servers": [
     {
       "url": "http://localhost:9001/api"
+    },
+    {
+      "url":"http://3.135.89.223:9001/api"
     }
   ]
 }
