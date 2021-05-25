@@ -1,0 +1,43 @@
+URL: https://host.inonectima.media:2083/
+USERNAME : app3fullb
+PASSWORD : gN52tUNq9O5sDe0FrMx
+
+connection: ssh -p 2200 app3fullb@162.255.160.21
+
+
+162.255.160.21
+
+app3fullb_logs
+
+
+Need:
+
+logo.svg
+favicone.inonectima
+
+
+ssh key name: doodle
+password: Yk_TgFW&&P_(
+
+CloudLinux
+
+
+puttygen​ doodle.pm -o (destination path with keyname.ppk)
+
+puttygen​ doodle.ppk -O private-openssh -o doodle.pm
+
+
+TTnpk387!
+    appfullbloom@gmail.com
+
+    Qu3h6vRrS5IttXB4
+
+
+    mongodb://doodle:Qu3h6vRrS5IttXB4@cluster0-shard-00-00.p73dc.mongodb.net:27017,cluster0-shard-00-01.p73dc.mongodb.net:27017,cluster0-shard-00-02.p73dc.mongodb.net:27017/doodle?ssl=true&replicaSet=atlas-muccex-shard-0&authSource=admin&retryWrites=true&w=majority
+
+    ssh -p 2200 app3fullb@170.249.236.138
+
+
+    ssh -p 2200 app3fullb@170.249.236.138
+
+    

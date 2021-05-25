@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /chefsy2/
+Disallow: /chefsy22/
+Disallow: https://backend.chefsy.ca/
+Disallow: https://chef.chefsy.ca/

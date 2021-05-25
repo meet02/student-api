@@ -1,0 +1,294 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "APP NAME",
+    "description": "APp Name"
+  },
+  "paths": {
+
+    "/admin/create-admin-user": {
+      "post": {
+        "x-controller-name": "AdminController",
+        "x-operation-name": "createAdmin",
+        "tags": [
+          "AdminController"
+        ],
+        "responses": {
+          "200": {
+            "description": "createAdmin",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "name"
+                  },
+                  "email":{
+                    "type": "string"
+                  },
+                  "password":{
+                    "type": "string"
+                  },
+                  "profilePhoto": {
+                    "type": "file",
+                    "format": "binary"
+                  },
+                  "gender":{
+                    "type":"string",
+                    "enum":["male","female"]
+                  },
+                  "weight":{
+                    "type":"number"
+                  },
+                  "length":{
+                    "type":"number"
+                  },
+                  "age":{
+                    "type":"number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "AdminController.createAdmin"
+      }
+    },
+    "/admin/login-admin-user": {
+      "post": {
+        "x-controller-name": "AdminController",
+        "x-operation-name": "loginAdminUser",
+        "tags": [
+          "AdminController"
+        ],
+        "responses": {
+          "200": {
+            "description": "loginAdminUser",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password":{
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "AdminController.loginAdminUser"
+      }
+    },
+    "/admin/update-admin-user": {
+      "put": {
+        "x-controller-name": "AdminController",
+        "x-operation-name": "updateUser",
+        "tags": [
+          "AdminController"
+        ],
+        "responses": {
+          "200": {
+            "description": "updateUser",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "name"
+                  },
+                  "email":{
+                    "type": "string"
+                  },
+                  "password":{
+                    "type": "string"
+                  },
+                  "profilePhoto": {
+                    "type": "file",
+                    "format": "binary"
+                  },
+                  "gender":{
+                    "type":"string",
+                    "enum":["male","female"]
+                  },
+                  "weight":{
+                    "type":"number"
+                  },
+                  "length":{
+                    "type":"number"
+                  },
+                  "age":{
+                    "type":"number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "AdminController.updateUser"
+      }
+    },
+    "/admin/get-admin-user": {
+      "get": {
+        "x-controller-name": "AdminController",
+        "x-operation-name": "getUserList",
+        "tags": ["AdminController"],
+        "security": [
+          {
+            "jwt": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "getUserList",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+
+        "parameters": [
+
+          {
+            "name": "userId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        
+        "operationId": "AdminController.getUserList"
+      }
+    },
+    "/admin/forgot-password-send-otp": {
+      "post": {
+        "x-controller-name": "AdminController",
+        "x-operation-name": "forgotpasswordOTP",
+        "tags": [
+          "AdminController"
+        ],
+        "responses": {
+          "200": {
+            "description": "forgotpasswordOTP",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email":{
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "AdminController.forgotpasswordOTP"
+      }
+    },
+    "/admin/veridy-otp": {
+      "post": {
+        "x-controller-name": "AdminController",
+        "x-operation-name": "verifyOTP",
+        "tags": [
+          "AdminController"
+        ],
+        "responses": {
+          "200": {
+            "description": "verifyOTP",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email":{
+                    "type": "string"
+                  },
+                  "otp":{
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "AdminController.verifyOTP"
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:9001/api"
+    }
+  ]
+}
