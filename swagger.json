@@ -33,8 +33,11 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "name": {
-                    "type": "name"
+                  "firstName": {
+                    "type": "string"
+                  },
+                  "lastName": {
+                    "type": "string"
                   },
                   "email":{
                     "type": "string"
@@ -45,19 +48,6 @@
                   "profilePhoto": {
                     "type": "file",
                     "format": "binary"
-                  },
-                  "gender":{
-                    "type":"string",
-                    "enum":["male","female"]
-                  },
-                  "weight":{
-                    "type":"number"
-                  },
-                  "length":{
-                    "type":"number"
-                  },
-                  "age":{
-                    "type":"number"
                   }
                 }
               }
@@ -136,8 +126,11 @@
                   "userId": {
                     "type": "string"
                   },
-                  "name": {
-                    "type": "name"
+                  "firstName": {
+                    "type": "string"
+                  },
+                  "lastName": {
+                    "type": "string"
                   },
                   "email":{
                     "type": "string"

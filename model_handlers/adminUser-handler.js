@@ -82,20 +82,21 @@ const creatAdminUser = (body, files) => {
               let insertObj = {
                 userId: idGenerator.generateRandom(labelConstants.ADMIN_USER),
                 profilePhoto: profilePhoto,
-                name: body.name,
+                firstName: body.firstName,
+                lastName: body.lastName,
                 email: body.email,
                 password: body.password,
-                gender: body.gender,
-                weight: body.weight,
-                length: body.length,
-                age: body.age,
               };
 
               let insertDocumnet = await query.insertSingle(
                 dbConstant.dbSchema.adminUsers,
                 insertObj
               );
-              resolve("User Register Successfully");
+
+              let getAdminData = await getAdminUser({
+                userId: insertDocumnet.userId,
+              });
+              resolve(getAdminData);
               return;
             }
           );
@@ -211,8 +212,11 @@ const updateAdminUser = (body, files) => {
 
       let updateColum = {};
 
-      if (!_.isEmpty(body.name)) {
-        updateColum["name"] = body.name;
+      if (!_.isEmpty(body.firstName)) {
+        updateColum["firstName"] = body.firstName;
+      }
+      if (!_.isEmpty(body.lastName)) {
+        updateColum["lastName"] = body.lastName;
       }
       if (!_.isEmpty(body.email)) {
         updateColum["email"] = body.email;
@@ -316,8 +320,14 @@ const updateAdminUser = (body, files) => {
                 return;
               }
 
-              resolve("Data Updated Successfully");
+              let getAdminData = await getAdminUser({
+                userId: body.userId,
+              });
+              resolve(getAdminData);
               return;
+
+              // resolve("Data Updated Successfully");
+              // return;
             }
           );
         } else {
@@ -348,8 +358,14 @@ const updateAdminUser = (body, files) => {
           return;
         }
 
-        resolve("Data Updated Successfully");
+        let getAdminData = await getAdminUser({
+          userId: body.userId,
+        });
+        resolve(getAdminData);
         return;
+
+        // resolve("Data Updated Successfully");
+        // return;
       }
     } catch (err) {
       reject(err);

@@ -7,27 +7,32 @@ const adminUserSchema = new Schema(
   {
     userId: {
       type: "String",
-      require: true,
+      default: "",
     },
     profilePhoto: {
       type: "String",
-      require: true,
+      default: "",
     },
-    name: {
+    firstName: {
       type: "String",
-      require: true,
+      default: "",
+    },
+    lastName: {
+      type: "String",
+      default: "",
     },
     email: {
       type: "String",
-      require: true,
+      default: "",
     },
     password: {
       type: "String",
-      require: true,
+      default: "",
     },
     gender: {
       type: "String",
-      enum: ["male", "female"],
+      enum: ["male", "female", ""],
+      default: "",
     },
     weight: {
       type: "Number",
