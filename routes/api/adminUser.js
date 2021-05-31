@@ -20,13 +20,14 @@ router.post("/create-admin-user", async (req, res) => {
     const { body, files } = req;
 
     let obj = {
-      name: Joi.string().required(),
+      firstName: Joi.string(),
+      lastName: Joi.string(),
       email: Joi.string().required(),
       password: Joi.string().required(),
-      gender: Joi.string().required().valid("male", "female"),
-      weight: Joi.number().required(),
-      length: Joi.number().required(),
-      age: Joi.number().required(),
+      // gender: Joi.string().required().valid("male", "female"),
+      // weight: Joi.number().required(),
+      // length: Joi.number().required(),
+      // age: Joi.number().required(),
     };
     let checkJoiValidationValidate = await commonFunction.checkJoiValidation(
       body,
@@ -102,20 +103,20 @@ router.put("/update-admin-user", async (req, res) => {
   try {
     const { body, files } = req;
 
-    let obj = {
-      name: Joi.string(),
-      email: Joi.string(),
-      password: Joi.string(),
-      gender: Joi.string().valid("male", "female"),
-      weight: Joi.number(),
-      length: Joi.number(),
-      age: Joi.number(),
-      userId: Joi.string().required(),
-    };
-    let checkJoiValidationValidate = await commonFunction.checkJoiValidation(
-      body,
-      obj
-    );
+    // let obj = {
+    //   name: Joi.string(),
+    //   email: Joi.string(),
+    //   password: Joi.string(),
+    //   gender: Joi.string().valid("male", "female"),
+    //   weight: Joi.number(),
+    //   length: Joi.number(),
+    //   age: Joi.number(),
+    //   userId: Joi.string().required(),
+    // };
+    // let checkJoiValidationValidate = await commonFunction.checkJoiValidation(
+    //   body,
+    //   obj
+    // );
     let response = await adminUserHandler.updateAdminUser(body, files);
     jsonResponse(res, responseCodes.OK, errors.noError(), response);
   } catch (error) {
