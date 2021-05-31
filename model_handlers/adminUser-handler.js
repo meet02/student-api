@@ -112,14 +112,28 @@ const creatAdminUser = (body, files) => {
           return;
         }
       } else {
-        reject(
-          errors.customError(
-            "Please Upload Profile Photo",
-            404,
-            "MISSING_PROFILE_PHOTO"
-          ),
-          true
+        passwordHandler.newHash(body.password, (password) => {
+          body.password = password;
+        });
+
+        let insertObj = {
+          userId: idGenerator.generateRandom(labelConstants.ADMIN_USER),
+          profilePhoto: "",
+          firstName: body.firstName,
+          lastName: body.lastName,
+          email: body.email,
+          password: body.password,
+        };
+
+        let insertDocumnet = await query.insertSingle(
+          dbConstant.dbSchema.adminUsers,
+          insertObj
         );
+
+        let getAdminData = await getAdminUser({
+          userId: insertDocumnet.userId,
+        });
+        resolve(getAdminData);
         return;
       }
     } catch (err) {
@@ -164,7 +178,7 @@ const loginUserName = (body) => {
       passwordHandler.verify(
         body.password,
         getUserName.password,
-        (password) => {
+        async (password) => {
           if (password) {
             if (getUserName.status == "inactive") {
               reject(
@@ -177,10 +191,17 @@ const loginUserName = (body) => {
               );
               return;
             }
-            getUserName.profilePhoto = `${config.baseUrl}${imagePathConstant.ADMIN_IMAGE_URL}${getUserName.profilePhoto}`;
-            console.log("getUserName", getUserName.profilePhoto);
-            resolve(getUserName);
+
+            let getAdminData = await getAdminUser({
+              userId: getUserName.userId,
+            });
+            resolve(getAdminData);
             return;
+
+            // getUserName.profilePhoto = `${config.baseUrl}${imagePathConstant.ADMIN_IMAGE_URL}${getUserName.profilePhoto}`;
+            // console.log("getUserName", getUserName.profilePhoto);
+            // resolve(getUserName);
+            // return;
           } else {
             reject(
               errors.customError(
@@ -391,8 +412,10 @@ const getAdminUser = (queryParams) => {
       // for (let x in getUserList) {
 
       // }
+      if (getUserList.profilePhoto) {
+        getUserList.profilePhoto = `${config.baseUrl}${imagePathConstant.ADMIN_IMAGE_URL}${getUserList.profilePhoto}`;
+      }
 
-      getUserList.profilePhoto = `${config.baseUrl}${imagePathConstant.ADMIN_IMAGE_URL}${getUserList.profilePhoto}`;
       resolve(getUserList);
       return;
     } catch (err) {
