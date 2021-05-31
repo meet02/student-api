@@ -44,10 +44,6 @@
                   },
                   "password":{
                     "type": "string"
-                  },
-                  "profilePhoto": {
-                    "type": "file",
-                    "format": "binary"
                   }
                 }
               }
