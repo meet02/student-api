@@ -280,11 +280,14 @@ const updateAdminUser = (body, files) => {
       if (findDublicateRecord) {
         if (findDublicateRecord.userId == body.userId) {
         } else {
+          console.log("in error");
           reject(
-            "Email Or Username Already Register To Over System Use Diffrent Email or Username",
-            406,
-            "DUBLICATE EMAIL",
-            true
+            errors.customError(
+              "Email Or Username Already Register To Over System Use Diffrent Email or Username",
+              406,
+              "DUBLICATE EMAIL",
+              true
+            )
           );
           return;
         }
