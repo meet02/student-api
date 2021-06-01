@@ -94,7 +94,7 @@
       }
     },
     "/admin/update-admin-user": {
-      "put": {
+      "post": {
         "x-controller-name": "AdminController",
         "x-operation-name": "updateUser",
         "tags": [

@@ -99,7 +99,7 @@ Original Author : Meet Aghera
 Created At : 26th April 2021 
 */
 
-router.put("/update-admin-user", async (req, res) => {
+router.post("/update-admin-user", async (req, res) => {
   try {
     const { body, files } = req;
 
